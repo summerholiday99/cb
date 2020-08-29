@@ -15,10 +15,12 @@ def compare_week(df_new, df_old, list_date):
     t2.rename(columns={'定价偏离(%)':list_date[1]}, inplace=True) 
     df_aim = pd.merge(t1,t2,on='转债代码',how='right')   #生成对比表 
     df_aim.dropna(inplace=True)
-    
     df_aim['变化'] = df_aim[list_date[0]] - df_aim[list_date[1]]
     df_aim['是否转债'] = df_aim['转债简称'].apply(lambda x:'EB' if 'EB' in x else '转债')
     return df_aim
+
+def change_test():
+    return
 
 def stat_week(df, list_date):
     '''几个统计，做成一张表'''
